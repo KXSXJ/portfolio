@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import {theme} from "../../../shared/styles/theme";
 import {useEffect, useRef, useState} from "react";
-import {Images} from "./ProjectData";
+import {Images} from "../model/ProjectData";
 
 interface ProjectProps{
     title:string,

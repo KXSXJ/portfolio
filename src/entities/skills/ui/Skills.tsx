@@ -23,6 +23,7 @@ export const Skills:React.FC= ()=>{
                     end :'top 70%',
                     toggleActions: 'play none none none',
                     scrub: 1,
+                    // markers: true,
                 },
             });
 
@@ -82,7 +83,6 @@ export const Skills:React.FC= ()=>{
                         <Grid_Wrapper $lineNum={lineNum} key={title}>
                             <h3> {title}</h3>
                             <ul>
-
                                 {list.map(({_skills},cIdx)=> (
                                     <span key={cIdx}>
                                         {lineNum===cIdx+1 &&<li></li>}

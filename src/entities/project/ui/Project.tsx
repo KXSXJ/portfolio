@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {theme} from "../../../shared/styles/theme";
-import {Images, ProjectData} from "./ProjectData";
+import {Images, ProjectData} from "../model/ProjectData";
 import {useEffect, useRef, useState} from "react";
 import {gsap} from "gsap";
 import {ImageModal} from "./ImageModal";
@@ -82,12 +82,14 @@ export const Project :React.FC =()=>{
                                     </li>
                                 ))}
                             </ul>
+                            {data.git_link &&
                             <a onClick={() => {
                                 window.open(data.git_link)
                             }}>
                                 <div></div>
                                 {data.git_link}
                             </a>
+                            }
                             <p>{data.use_stack}</p>
                             <div style={{marginTop:'1rem'}}>
                                 <button style={{marginRight: '0.5rem'}} onClick={()=>window.open(data.readme_url)}>
@@ -121,6 +123,7 @@ const Project_Container = styled.section`
     position: relative;
     z-index: 3;
     color: ${theme.color.black};
+    background-color:${theme.color.white};
     div {
         article {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

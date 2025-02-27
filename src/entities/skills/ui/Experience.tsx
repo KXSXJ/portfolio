@@ -74,7 +74,7 @@ export const Experience_Container =styled.div`
 const Grid_Container = styled.article`
     margin-top: 3rem;
     section {
-        padding: 3rem;
+        padding: 2.5rem;
         display: flex;
         flex-direction: column;
         justify-items: center;
@@ -85,7 +85,7 @@ const Grid_Container = styled.article`
         
         div{
             position: absolute;
-            margin: -1.7rem;
+            margin: -1.5rem;
             margin-left: -2.3rem;
             transform: rotate(-5deg);
         }

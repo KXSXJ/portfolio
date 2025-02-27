@@ -25,8 +25,5 @@ export const KnowledgeData :SkillState = {
         {
             _skills:[{name:'SQLite', url:'sqlite.png'}]
         },
-        {
-            _skills:[{name:'Amazon', url:'aws.png'}]
-        }
     ]
 }

@@ -24,6 +24,9 @@ export const StrengthData :SkillState[] = [
         lineNum:4,
         list:[
             {
+                _skills:[{name:'Next.js', url :'next.png'}]
+            },
+            {
                 _skills:[{name:'React.js', url :'react.png'}]
             },
             {
@@ -41,7 +44,9 @@ export const StrengthData :SkillState[] = [
             {
                 _skills:[{name:'MySql', url :'mySql.png'}]
             },
-
+            {
+                _skills:[{name:'Amazon', url:'aws.png'}]
+            }
         ]
     },
     {

@@ -1,17 +1,23 @@
 import styled from "@emotion/styled";
 import {media, theme} from "../../../shared/styles/theme";
-import {forwardRef, useEffect, useRef} from "react";
-import {gsap} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+
 
 export const AboutMe :React.FC =()=>{
 
     return(
         <AboutMe_Container>
             <h1 id={"About"}>ABOUT ME</h1>
-            {window.innerWidth <= 420 && <h2>FE 개발자 강승재</h2>}
+            <Explain_Box>
+                <h2>Who's 강승재</h2>
+                <br/>
+                <h4>프로그래밍을 통한 문제해결을 즐기는 개발자입니다.</h4>
+                <h4>소통을 어려워하지 않으며 제가 생각하고 있는 것을 자유롭게 표현할 수 있습니다.</h4>
+                <h4>새로운 기술의 학습하고 지식을 확장하여 기업, 소비자에게 가치를 더하는 개발자가 되겠습니다.</h4>
+            </Explain_Box>
+            <SubTitle_Box>
+                <h2>Information & Contact</h2>
+            </SubTitle_Box>
             <Grid_Box>
-
                 <Info_Box>
                     <Icon_Wrapper>
                         <i className="fi fi-rc-cake-birthday"></i>
@@ -50,8 +56,8 @@ export const AboutMe :React.FC =()=>{
                     </div>
                 </Info_Box>
             </Grid_Box>
-            <hr></hr>
-            <p>꾸준한 성장과 프론트 기반 지식 확장 및 지식에 대한 열망이 있습니다. </p>
+    
+  
 
         </AboutMe_Container>
     )
@@ -61,6 +67,7 @@ const AboutMe_Container = styled.section`
     width: 100%;
     padding-block: 4rem;
     color: ${theme.color.black};
+    background-color:${theme.color.white};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,8 +133,9 @@ const Info_Box = styled.div`
         margin-top: 0.1rem;
         font-weight: 550;
     }
+    position:relative;
     z-index: 2;
-cursor: pointer;
+    cursor: pointer;
     &:hover{
         transform: scale(1.05);
     }
@@ -152,15 +160,40 @@ const Grid_Box = styled.div`
     justify-content: center; 
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
-    margin-top: 2rem;
+    margin-block: 1rem;
     
     div {
         margin: 0.1rem;
     }
 
-    /* 모바일 모드: 화면 너비 600px 이하일 때 1줄씩 */
+    /* 모바일 모드: 화면 너비 400px 이하일 때 1줄씩 */
     ${media.mobile} {
         grid-template-columns: 1fr; /* 1줄 */
     }
 `;
 
+
+const Explain_Box = styled.div`
+    width:40rem;
+    ${media.mobile} {
+        width:80%;
+        max-width:30rem;
+    }
+    margin-block:4rem;
+    display: block;
+    justify-content:left !important;
+    h4{
+        line-height:1.5rem;
+    }
+`
+
+const SubTitle_Box = styled.div`
+    width:40rem;
+    ${media.mobile} {
+        width:80%;
+        max-width:20rem;
+    }
+    margin-bottom:1rem;
+    justify-content:left !important;
+
+`

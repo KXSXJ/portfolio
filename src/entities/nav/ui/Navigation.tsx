@@ -21,6 +21,7 @@ export const Navigation :React.FC=()=>{
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+    
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             // Navigation_Container 내부에서 클릭된 경우 무시
