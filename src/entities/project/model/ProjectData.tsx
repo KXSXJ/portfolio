@@ -26,7 +26,7 @@ export const ProjectData :ProjectState[] =[
     //     dev_time :'2025.01.15 ~ ing (진행중)',
     //     dev_scale :'2인 팀프로젝트',
     //     sub_title :'SaaS ERP Program',
-    //     content :['Jpa를 활용한 ERP 데이터 처리', 'Media Query를 활용한 반응형웹 처리', 'Interception + Parallel Routing을 활용한 모달처리', 'Spring Security, JWT를 활용한 사용자 인증','UI/UX 개선을 통한 가시성 확보'],
+    //     content :['SPA로 사용자 경험 개선', 'Interception + Parallel Routing을 활용한 모달처리', 'Spring Security, JWT를 활용한 사용자 인증', '직관적인 UI/UX로 개선 및 모바일 뷰 제공'],
     //     git_link:'',
     //     use_stack:'Next.js, React.js,TypeScript, JavaScript, Spring, HTML/CSS',
     //     readme_url:'https://trusting-booklet-f52.notion.site/120b6025ab278011bdfcf80dfb55cf01?pvs=4',
