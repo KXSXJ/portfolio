@@ -3,7 +3,7 @@ import {SkillState} from "./types";
 export const StrengthData :SkillState[] = [
     {
         title:'Frontend',
-        lineNum:3,
+        lineNum:[2],
         list:[
             {
                 _skills:[{name:'HTML5', url:'html.png'}],
@@ -21,7 +21,7 @@ export const StrengthData :SkillState[] = [
     },
     {
         title:'Libraries/FrameWorks/Database',
-        lineNum:4,
+        lineNum:[4],
         list:[
             {
                 _skills:[{name:'Next.js', url :'next.png'}]
@@ -33,10 +33,10 @@ export const StrengthData :SkillState[] = [
                 _skills:[{name:'React-Query', url :'reactQuery.png'}]
             },
             {
-                _skills:[{name:'Redux', url :'redux.png'},{name:'Redux-Saga', url :'saga.png'}]
+                _skills:[{name:'Zustand', url :'zustand.png'}]
             },
             {
-                _skills:[{name:'BootStrap', url :'bootstrap.png'}]
+                _skills:[{name:'Redux', url :'redux.png'},{name:'Redux-Saga', url :'saga.png'}]
             },
             {
                 _skills:[{name:'Spring', url :'spring.png'}]
@@ -44,14 +44,11 @@ export const StrengthData :SkillState[] = [
             {
                 _skills:[{name:'MySql', url :'mySql.png'}]
             },
-            {
-                _skills:[{name:'Amazon', url:'aws.png'}]
-            }
         ]
     },
     {
         title:'Version Control Tools',
-        lineNum:3,
+        lineNum:[3],
         list:[
             {
                 _skills:[{name:'Git', url:'git.png'}]
@@ -63,8 +60,11 @@ export const StrengthData :SkillState[] = [
     },
     {
         title:'Styling/Design Tools',
-        lineNum:4,
+        lineNum:[4],
         list:[
+            {
+                _skills:[{name:'BootStrap', url :'bootstrap.png'}]
+            },
             {
                 _skills: [{name:'Styled Components', url:'styled.png'}]
             },
@@ -73,7 +73,7 @@ export const StrengthData :SkillState[] = [
             },
             {
                 _skills: [{name:'Figma', url:'figma.png'}]
-            }
+            },
         ]
     }
 ]

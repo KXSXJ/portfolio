@@ -80,19 +80,17 @@ export const Skills:React.FC= ()=>{
                 <h2 style={{color:theme.color.red}}>STRENGTH</h2>
                 <Grid_Container>
                     {StrengthData.map(({title, lineNum, list},rIdx)=>(
-                        <Grid_Wrapper $lineNum={lineNum} key={title}>
-                            <h3> {title}</h3>
+                        <Grid_Wrapper>
+                            <h3>{title}</h3>
                             <ul>
-                                {list.map(({_skills},cIdx)=> (
-                                    <span key={cIdx}>
-                                        {lineNum===cIdx+1 &&<li></li>}
-                                        <li ref={(el)=> {
-                                            strengthRef.current[rIdx][cIdx] = el
-                                        }}>
-                                            <Skill_Item _skills={_skills}/>
-                                        </li>
-                                    </span>
-                                ))}
+                            {list.map(({ _skills }, cIdx) => (
+                            <>
+                                {lineNum.includes(cIdx) && <li style={{ flexBasis: '100%' }} />}
+                                <li ref={(el) => { strengthRef.current[rIdx][cIdx] = el }}>
+                                <Skill_Item _skills={_skills} />
+                                </li>
+                            </>
+                            ))}
                             </ul>
                         </Grid_Wrapper>
                     ))}
@@ -100,15 +98,15 @@ export const Skills:React.FC= ()=>{
             </Skill_Wrapper>
             <Skill_Wrapper>
                 <h2 style={{marginBlock:'1rem', color:theme.color.lightBlue}}>{KnowledgeData.title}</h2>
-                <Grid_Wrapper $lineNum={KnowledgeData.lineNum}>
+                <Grid_Wrapper>
                     <ul>
                         {KnowledgeData.list.map(({_skills},idx)=>
-                            <span key={idx}>
-                                {KnowledgeData.lineNum === idx + 1 && <li></li>}
+                            <>
+                                {KnowledgeData.lineNum.includes(idx + 1)  && <li style={{ flexBasis: '100%' }}/>}
                                 <li ref={(el)=>{knowledgeableRef.current[idx] =el}}>
                                     <Skill_Item _skills={_skills}/>
                                 </li>
-                            </span>
+                            </>
                         )}
                     </ul>
                 </Grid_Wrapper>
@@ -153,7 +151,7 @@ const Grid_Container = styled.article`
     }
 }
 `
-const Grid_Wrapper = styled.div<{$lineNum:number}>`
+const Grid_Wrapper = styled.div`
     grid-auto-flow: dense;
     
     ul{
@@ -162,9 +160,7 @@ const Grid_Wrapper = styled.div<{$lineNum:number}>`
         li{
             width: fit-content;
             margin:0.2rem;
-            &:nth-of-type(${props=>props.$lineNum}) {
-                flex-basis: 100%; //원하는 라인부터 줄넘김
-            }
+
         }
     }
     

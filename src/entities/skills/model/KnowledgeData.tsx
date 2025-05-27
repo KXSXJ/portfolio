@@ -2,8 +2,11 @@ import {SkillState} from "./types";
 
 export const KnowledgeData :SkillState = {
     title:'KNOWLEDGE',
-    lineNum:5,
+    lineNum:[0],
     list:[
+        {
+            _skills:[{name:'Amazon', url:'aws.png'}]
+        },
         {
             _skills:[{name:'C', url:'c.png'}]
         },
@@ -25,5 +28,6 @@ export const KnowledgeData :SkillState = {
         {
             _skills:[{name:'SQLite', url:'sqlite.png'}]
         },
+        
     ]
 }

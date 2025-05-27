@@ -8,7 +8,7 @@ export interface Skill_List{
 }
 export interface SkillState{
     title :string,
-    lineNum:number,
+    lineNum:number[],
     list : Skill_List[]
 }
 
