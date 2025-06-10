@@ -24,5 +24,5 @@ export const media = {
     custom: customMediaQuery,
     laptop: customMediaQuery(1440),
     tablet: customMediaQuery(800),
-    mobile: customMediaQuery(420),
+    mobile: customMediaQuery(430),
 };

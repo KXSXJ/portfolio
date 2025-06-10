@@ -20,7 +20,7 @@ export const Skills:React.FC= ()=>{
                 scrollTrigger: {
                     trigger: elList[0],
                     start: 'top bottom',
-                    end :'top 70%',
+                    end :'top 65%',
                     toggleActions: 'play none none none',
                     scrub: 1,
                     // markers: true,
@@ -53,6 +53,7 @@ export const Skills:React.FC= ()=>{
                 end :'top 85%',
                 toggleActions: 'play none none none',
                 scrub: 1,
+                // markers: true,
             },
         });
         knowledgeableRef.current.forEach((el)=>{
@@ -69,9 +70,7 @@ export const Skills:React.FC= ()=>{
                 )
             }
         })
-
-
-
+        ScrollTrigger.refresh();
     }, []);
 
     return(

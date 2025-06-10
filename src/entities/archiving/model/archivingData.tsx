@@ -11,7 +11,7 @@ export const archivingData :ArchivingState[]=[
         title:'소스코드 저장소',
         imageUrl:'github.png',
         target:"GitHub",
-        url:"https://github.com/KXSXJ/Calenj",
+        url:"https://github.com/KXSXJ",
         list:["프로젝트 및 코딩테스트 코드", "fork, clone을 통한 협업"],
     },
     {

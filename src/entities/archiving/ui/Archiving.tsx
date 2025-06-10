@@ -53,7 +53,7 @@ const Archiving_Container = styled.section`
     
 
     article{
-        padding: 3rem;
+        padding: 2rem;
         background-color: ${theme.color.white};
         color: ${theme.color.black};
         border-radius: 5px;

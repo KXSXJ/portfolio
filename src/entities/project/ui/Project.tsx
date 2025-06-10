@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
 import {theme} from "../../../shared/styles/theme";
-import {Images, ProjectData} from "../model/ProjectData";
+import {Images, ProjectData, ProjectState} from "../model/ProjectData";
 import {useEffect, useRef, useState} from "react";
 import {gsap} from "gsap";
 import {ImageModal} from "./ImageModal";
+import { ScrollTrigger } from "gsap/all";
 
 
 export const Project :React.FC =()=>{
@@ -50,6 +51,8 @@ export const Project :React.FC =()=>{
                 timeline.kill())
             }
         });
+        ScrollTrigger.refresh();
+
         return ()=>{
             document.body.style.overflow = 'auto';
         }
@@ -64,34 +67,46 @@ export const Project :React.FC =()=>{
             }
             <h1>PROJECT</h1>
             <div className="grid">
-                {ProjectData.map((data,idx)=>(
+                {ProjectData.map((data:ProjectState,idx:number)=>(
 
                     <article key={data.title} ref={(el)=> {
                         articleRef.current[idx] =el
-                    }}><Cover_Img $url={process.env.PUBLIC_URL +`/images/${data.cover}`}/>
+                    }}><Cover_Img $url={process.env.PUBLIC_URL +`/images/${data.cover}`}>
+                        </Cover_Img>
                         <section>
-                            <h5>{data.title}</h5>
-                            <h6>개발기간 : {data.dev_time}</h6>
-                            <h6>개발규모 : {data.dev_scale}</h6>
-                            <hr></hr>
-                            <h4>{data.sub_title}</h4>
-                            <ul>
-                                {data.content.map((text, idx) => (
-                                    <li key={idx}>
-                                        {text}
-                                    </li>
-                                ))}
-                            </ul>
-                            {data.git_link &&
-                            <a onClick={() => {
-                                window.open(data.git_link)
-                            }}>
-                                <div></div>
-                                {data.git_link}
-                            </a>
-                            }
+                            <div>
+                                <h5>{data.title}</h5>
+                                <h6 style={{display:'flex', gap:'0.2rem'}}>배포상태 : <h6 style={{margin:'unset', color:data.isDistribution ? '#007bff':''}}>{data.isDistribution ? '배포중' :'배포중단'}</h6></h6>
+                                <h6>개발기간 : {data.dev_time}</h6>
+                                <h6>개발규모 : {data.dev_scale}</h6>
+                                <hr></hr>
+                                <h4>{data.sub_title}</h4>
+                                <ul>
+                                    {data.content.map((text, idx) => (
+                                        <li key={idx}>
+                                            {text}
+                                        </li>
+                                    ))}
+                                </ul>
+                                {data.distribution_link &&
+                                <a onClick={() => {window.open(data.distribution_link)}}
+                                   style={{marginTop:'1rem'}}>
+                                    <img src={process.env.PUBLIC_URL + '/images/link.png'} style={{height:'1.65rem'}}></img>
+                                    <div></div>
+                                    {data.distribution_link}
+                                </a>
+                                }
+                                {data.git_link &&
+                                <a onClick={() => {window.open(data.git_link) }}
+                                   style={{marginTop: data.distribution_link ? '0.2rem' : '1rem'}}>
+                                    <img src={process.env.PUBLIC_URL + '/images/github.png'} style={{height:'1.65rem'}}></img>
+                                    <div></div>
+                                    {data.git_link}
+                                </a>
+                                }
                             <p>{data.use_stack}</p>
-                            <div style={{marginTop:'1rem'}}>
+                            </div>
+                            <div style={{marginTop:'1rem'}} className="bottom-content">
                                 <button style={{marginRight: '0.5rem'}} onClick={()=>window.open(data.readme_url)}>
                                     <img src={process.env.PUBLIC_URL + '/images/readme.png'}></img>
                                     <>README</>
@@ -129,9 +144,19 @@ const Project_Container = styled.section`
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             border-radius:5px;
             section {
+                height: calc(100% - 13rem);
+                box-sizing:border-box;
                 padding: 1.5rem;
+                display: flex;
+                flex-direction : column;
+                justify-content: space-between;
             }
             
+            span{
+                display:flex;
+                height:1rem;
+            }
+              
             h5 {
                 width: fit-content;
                 font-size: 1.2rem;
@@ -142,6 +167,7 @@ const Project_Container = styled.section`
                 margin-bottom: 1rem;
                 font-weight: 550;
             }
+            
     
             h6 {
                 margin-block: 0.4rem;
@@ -174,7 +200,6 @@ const Project_Container = styled.section`
                 display: flex;
                 font-size: 1.2rem;
                 align-items: center;
-                margin-top: 1rem;
                 color: ${theme.color.lightBlue};
                 &:hover{
                     color: ${theme.color.blue};
@@ -182,9 +207,8 @@ const Project_Container = styled.section`
                 div{
                     width: 0.25rem;
                     height: 1.4rem;
-                    margin:0;
+                    margin-inline:0.5rem;
                     border-radius: 0;
-                    margin-right: 0.5rem;
                     background-color: ${theme.color.blue};
                 }
                 
@@ -200,39 +224,52 @@ const Project_Container = styled.section`
                 border:1px solid ${theme.color.orange};
                 padding: 0.3rem;
             }
-            div{
-                display: flex;
-                flex-direction: row;
-                button{
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    background-color: transparent;
-                    padding: 0.3rem;
-                    border-radius: 5px;
-                    border: 2px solid ${theme.color.black}20;
-                    font-weight: 550;
-                    cursor: pointer;
-                    &:hover{
-                        color: ${theme.color.blue}; 
-                    }
-                    img{
-                        height: 1.5rem;
-                        margin-right: 0.5rem;
-                    }
-                }
+            
+        }
+    }
+    .bottom-content{
+        display: flex;
+        flex-direction: row;
+        button{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: transparent;
+            padding: 0.3rem;
+            border-radius: 5px;
+            border: 2px solid ${theme.color.black}20;
+            font-weight: 550;
+            cursor: pointer;
+            &:hover{
+                color: ${theme.color.blue}; 
+            }
+            img{
+                height: 1.5rem;
+                margin-right: 0.5rem;
             }
         }
+    
     }
 `
 
 const Cover_Img = styled.div<{$url:string}>`
     width: 100%;
-    height: 13rem; /* 원하는 높이 설정 */
-    background-image: url(${props=>props.$url}); /* 이미지 URL 설정 */
-    background-size: cover; /* 이미지가 부모 요소를 채우도록 설정 */
-    background-position: top; /* 이미지를 가운데 정렬 */
-    background-repeat: no-repeat; /* 이미지 반복 금지 */
+    height: 13rem;
+    background-image: url(${props=>props.$url});
+    background-size: cover; 
+    background-position: top; 
+    background-repeat: no-repeat;
     border-radius: 5px 5px 0 0;
     margin: none;
+    display: flex;
+    box-sizing: border-box;
+    padding:1rem;
+    justify-content: flex-end;
+
+    .distribution-alert{
+        width:0.7rem;
+        height:0.7rem;
+        border:1px solid gray;
+        border-radius: 50%;
+    }
 `

@@ -38,20 +38,23 @@ export const ImageModal :React.FC<ProjectProps> = ({title,images,onClose})=>{
         }}>
             <Modal_Content_Container>
                 <span>
-                    <h4>{title} ({pageNum+1})</h4>
+                    <h4>{title}</h4>
                     <i className="bi bi-x-lg" onClick={onClose}></i>
                 </span>
-                <div>
-                <i className="fi fi-bs-angle-left" onClick={()=>pageHandler(0)}></i>
-                    <img src={process.env.PUBLIC_URL +`/images/project/${images[pageNum].url}`} alt={'projectImg'}></img>
-                    <i className="fi fi-bs-angle-right" onClick={()=>pageHandler(1)}></i>
-                </div>
                 <h5>
                 {images[pageNum].title}
                 </h5>
-                <p>
+                <p style={{height:'2rem'}}>
                     {images[pageNum].content}
                 </p>
+                <div>
+                    <i className="fi fi-bs-angle-left" onClick={()=>pageHandler(0)}></i>
+                        <img src={process.env.PUBLIC_URL +`/images/project/${images[pageNum].url}`} alt={'projectImg'}></img>
+                    <i className="fi fi-bs-angle-right" onClick={()=>pageHandler(1)}></i>
+                </div>
+                <div style={{width:'100%',display:'flex' ,justifyContent:'center'}}>
+                    <h5>{pageNum+1}/{images.length}</h5>
+                </div>
             </Modal_Content_Container>
         </Modal_Container>
     )
@@ -71,18 +74,25 @@ const Modal_Container = styled.section`
 `
 
 const Modal_Content_Container = styled.div`
-    width: 40rem;
-    height: 38rem;
+    width: 44rem;
+    height: fit-content;
     background-color: ${theme.color.white};
     border-radius: 5px;
     box-sizing: border-box;
-    padding-block: 2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding-block: 1.5rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
     h4{
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: 550;
-        margin-left: 7.5%;
+        margin-inline: 7.5%;
+
+        width: fit-content;
+        padding: 0.4rem;
+        border-radius: 5px;
+        background-color: ${theme.color.black};
+        color: ${theme.color.white};
+        font-weight: 550;
     }
     span{
         display: flex;
@@ -105,7 +115,7 @@ const Modal_Content_Container = styled.div`
         align-items: center;
         justify-content: space-between;
         img{
-            margin-top: 1rem;
+            margin-top: 0.7rem;
             width: 80%;
             max-height: 28rem;
             border-radius: 5px;
@@ -123,7 +133,7 @@ const Modal_Content_Container = styled.div`
     }
     h5{
         font-size: 1.2rem;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
         font-weight: 550;
         margin-inline: 10%;
     }
@@ -131,6 +141,6 @@ const Modal_Content_Container = styled.div`
         font-size: 0.9rem;
         margin-inline: 10%;
         line-height: 1.2rem;
-    }
-  
+        heigth: 2rem;
+    } 
 `
